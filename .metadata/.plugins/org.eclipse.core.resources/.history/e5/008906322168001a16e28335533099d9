@@ -1,0 +1,12 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+
+import com.mtit.doctor.Doctor;
+
+public interface Hospital {
+	public ArrayList<Doctor> getDoctorList();
+	public void addDoctor(Doctor doctor);
+	public void setNumberOfRooms();
+	public void assignRoom(Room room);
+}

@@ -1,0 +1,9 @@
+package com.mtit.account;
+
+public class MedicalHistory {
+	private String channeledDoctorName;
+	private String appointmentTime;
+	private String roomNumber;
+	private double payment;
+	private int appointmentNumber;
+}

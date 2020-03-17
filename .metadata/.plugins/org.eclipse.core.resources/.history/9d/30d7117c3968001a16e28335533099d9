@@ -1,0 +1,138 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+import java.util.PrimitiveIterator.OfDouble;
+import java.util.Scanner;
+
+public class HospitalImpl implements Hospital {
+
+	private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
+	private int numberOfRooms;
+	private ArrayList<Room> assignRooms = new ArrayList<Room>();
+	private double hospitalCharge;
+	private int patientToken;
+	private Doctor doctor;
+	
+	@Override
+	public ArrayList<Doctor> getDoctorList() {
+		return doctors;
+	}
+
+	@Override
+	public void addDoctor(Doctor doctor) {
+		doctors.add(doctor);
+	}
+
+	@Override
+	public void setNumberOfRooms(int numberOfRooms) {
+		this.numberOfRooms = numberOfRooms;
+	}
+
+	@Override
+	public void assignRooms(Room room) {
+		assignRooms.add(room);
+	}
+
+	@Override
+	public ArrayList<Room> getAssignRooms() {
+		return assignRooms;
+	}
+
+	@Override
+	public void setHospitalCharge(double charge) {
+		this.hospitalCharge = charge;
+	}
+
+	@Override
+	public double getHospitalCharge() {
+		return hospitalCharge;
+	}
+
+	@Override
+	public void addAponitement() {
+		Scanner sc = new Scanner(System.in);
+							
+		System.out.println("==========================\nWELCOME TO HOSPITAL PORTAL\n==========================");
+		System.out.println("Select id to make an appoinment\n\n");
+		
+		for(Doctor doctor : getDoctorList()) {
+			System.out.println("Doctor name : " + doctor.getName() 
+				+ "||  Specialization : " + doctor.getSpecialization()
+				+ " || Available hour : " + doctor.getAvaialableHour()
+				+ " || ID : " + doctor.getId());
+		}
+		
+		int id = 0;
+		System.out.print("cmd>>");
+		id = sc.nextInt();
+		Doctor doctor = getDoctorById(id);
+		
+		while(doctor == null) {
+			System.out.println("**INVALID COMMAND**");
+			System.out.print("cmd>>");
+			id = sc.nextInt();
+			doctor = getDoctorById(id);
+			System.out.println(doctor.getName());
+		}
+		
+		System.out.println("");
+		int token = doctor.getToken();
+		
+		while(token != -1) {
+			System.out.println("Sorry all free slots for today are filled!");
+			System.out.println("Try again!");
+			System.out.print("cmd>>");
+			id = sc.nextInt();
+			doctor = getDoctorById(id);
+			token = doctor.getToken();
+		}
+		
+		if(token != -1) {
+			doctor.incrementToken();
+			setToken(token);
+			setDoctor(doctor);
+			System.out.println("Appointment Details!");
+			System.out.println("Doctor Name : " + doctor.getName()
+					+"\nAppointment number is : " + token 
+					+ "\nAppointment time : " + doctor.getAvaialableHour()
+					+ "\nRoom number : " + doctor.getRoom().getRoomNumber()
+					+ "\nPayment : Rs."+ (getHospitalCharge() + doctor.getChargePerPatient()));
+		}
+		
+		System.out.println("");
+	}
+	
+	public void process(Doctor doctor, int token) {
+		doctor.process(token);
+	}
+	
+	public Doctor getDoctorById(int id) {
+		for(Doctor doctor : getDoctorList()) {
+			if(doctor.getId() == id) {
+				return doctor;
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
+	public int getTocken() {
+		return patientToken;
+	}
+
+	@Override
+	public void setToken(int patientToken) {
+		this.patientToken = patientToken;
+	}
+
+	@Override
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	@Override
+	public Doctor getDoctor() {
+		return this.doctor;
+	}
+}

@@ -1,0 +1,118 @@
+package com.mtit.patient;
+
+import com.mtit.account.MedicalHistory;
+import com.mtit.account.MockAccountController;
+import com.mtit.hospital.Doctor;
+import com.mtit.hospital.Hospital;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+public class PatientActivator implements BundleActivator {
+
+	ServiceReference hospitalServiceReference;
+	ServiceReference accountServiceReference;
+	Hospital hospitalService;
+	MockAccountController mockAccountController;
+	
+	
+	public void start(BundleContext context) throws Exception {
+		hospitalServiceReference = context.getServiceReference(Hospital.class.getName());
+		hospitalService = (Hospital)context.getService(hospitalServiceReference);
+		
+		accountServiceReference = context.getServiceReference(MockAccountController.class.getName());
+		mockAccountController = (MockAccountController)context.getService(accountServiceReference);
+		
+		Executer executer = new Executer();
+		
+		Patient p1 = new Patient();
+		hospitalService.addAponitement();
+		p1.setPatientName("Rahul");
+		p1.setToken(hospitalService.getTocken());
+		p1.setDoctor(hospitalService.getDoctor());
+		p1.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		Patient p2 = new Patient();
+		hospitalService.addAponitement();
+		p2.setPatientName("Zed Nowik");
+		p2.setToken(hospitalService.getTocken());
+		p2.setDoctor(hospitalService.getDoctor());
+		p2.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		Patient p3 = new Patient();
+		hospitalService.addAponitement();
+		p3.setPatientName("Mary Ann");
+		p3.setToken(hospitalService.getTocken());
+		p3.setDoctor(hospitalService.getDoctor());
+		p3.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		Patient p4 = new Patient();
+		hospitalService.addAponitement();
+		p4.setPatientName("Jack Luice");
+		p4.setToken(hospitalService.getTocken());
+		p4.setDoctor(hospitalService.getDoctor());
+		p4.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		Patient p5 = new Patient();
+		hospitalService.addAponitement();
+		p5.setPatientName("Lucia Fernands");
+		p5.setToken(hospitalService.getTocken());
+		p5.setDoctor(hospitalService.getDoctor());
+		p5.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		
+		Patient p6 = new Patient();
+		hospitalService.addAponitement();
+		p6.setPatientName("Shen Rizvi");
+		p6.setToken(hospitalService.getTocken());
+		p6.setDoctor(hospitalService.getDoctor());
+		p6.setAccountId(hospitalService.getAccountId());
+		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		
+		executer.addPatient(p1);
+		executer.addPatient(p2);
+		executer.addPatient(p3);
+		executer.addPatient(p4);
+		executer.addPatient(p5);
+		executer.addPatient(p6);
+		
+		System.out.println("\n==================================\nDoctor starts analysing patients\n==================================");
+		for(Patient patient : executer.getAllPatients()) {
+			hospitalService.process(patient.getDoctor(), patient.getToken());
+		}
+		
+		
+		System.out.println("\n==================\nDoctors payments\n==================");
+		for(Doctor doctor : hospitalService.getDoctorList()) {
+			doctor.getPayment();
+		}
+						   
+		System.out.println("\n==================\nPatients Medical History\n==================");
+		
+		for(Patient patient : executer.getAllPatients()) {
+			
+			System.out.println("Patient : " + patient.getPatientName() + " Medical history");
+			System.out.println("=====================================================");
+			for(MedicalHistory medicalHistory : mockAccountController.getMedicalHistoryByAccountId(patient.getAccountId())) {
+				System.out.println("Doctor Name : " + medicalHistory.getChanneledDoctorName());
+				System.out.println("Appointment Time : " + medicalHistory.getAppointmentTime());
+				System.out.println("Appointment Number : " + medicalHistory.getAppointmentNumber());
+				System.out.println("Room Number : " + medicalHistory.getRoomNumber());
+				System.out.println("Payment : " + medicalHistory.getPayment());	
+				System.out.println("");
+			}
+			
+			System.out.println("=====================================================");
+		}
+	}
+
+	public void stop(BundleContext bundleContext) throws Exception {
+		
+	}
+
+}

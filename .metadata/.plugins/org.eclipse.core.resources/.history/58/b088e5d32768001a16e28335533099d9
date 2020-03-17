@@ -1,0 +1,90 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+
+public class DoctorImpl implements Doctor {
+	private String name;
+	private int id;
+	private int numberOfPatientPerDay;
+	private int consultingHours;
+	private double chargePerPatient;
+	private Room room;
+	
+	public int getConsultingHours() {
+		return consultingHours;
+	}
+
+	public void setConsultingHours(int consultingHours) {
+		this.consultingHours = consultingHours;
+	}
+
+	public double getChargePerPatient() {
+		return chargePerPatient;
+	}
+
+	public void setChargePerPatient(double chargePerPatient) {
+		this.chargePerPatient = chargePerPatient;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public void setNumberOfPatientPerDay(int numberOfPatients) {
+		this.numberOfPatientPerDay = numberOfPatients;
+	}
+
+	@Override
+	public int getNumberOfPatientPerDay() {
+		
+		return 0;
+	}
+
+	@Override
+	public void analysePatien() {
+		
+		
+	}
+
+	@Override
+	public void prescribePatient() {
+		
+		
+	}
+
+	@Override
+	public void getPayment() {
+		
+		
+	}
+
+	@Override
+	public void setRoom(Room room) {
+		
+		
+	}
+
+	@Override
+	public void getRoom() {
+		
+		
+	}
+	
+}

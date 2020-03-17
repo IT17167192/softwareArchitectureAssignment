@@ -1,0 +1,5 @@
+package com.mtit.account;
+
+public interface BaseClass {
+
+}

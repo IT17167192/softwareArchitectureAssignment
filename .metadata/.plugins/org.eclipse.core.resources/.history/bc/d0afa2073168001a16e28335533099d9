@@ -1,0 +1,24 @@
+package com.mtit.patient;
+
+import com.mtit.hospital.Hospital;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+public class PatientActivator implements BundleActivator {
+
+	ServiceReference hospitalServiceReference;
+	Hospital hospitalService;
+	
+	public void start(BundleContext context) throws Exception {
+		hospitalServiceReference = context.getServiceReference(Hospital.class.getName());
+		hospitalService = (Hospital)context.getService(hospitalServiceReference);
+		
+		hospitalService.addAponitement();
+	}
+
+	public void stop(BundleContext bundleContext) throws Exception {
+		
+	}
+
+}

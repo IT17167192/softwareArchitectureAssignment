@@ -1,0 +1,74 @@
+package com.mtit.hospital;
+
+import com.mtit.doctor.Doctor;
+import com.mtit.doctor.DoctotImpl;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+public class HospitalServiceActivator implements BundleActivator {
+
+	ServiceReference doctorServiceReference;
+	Doctor doctor1;
+	Doctor doctor2;
+	ServiceRegistration serviceRegistration;
+	
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Hospital Service is started!");
+		Hospital hospital = new HospitalImpl();
+		hospital.setNumberOfRooms(10);
+		
+		doctorServiceReference = context.getServiceReference(Doctor.class.getName());
+		doctor1 = (Doctor)context.getService(doctorServiceReference);
+		doctor2 = (Doctor)context.getService(doctorServiceReference);
+		
+		doctor1.setName("Yugma Fernando");
+		doctor1.setGender('M');
+		doctor1.setClinicHours(3);
+		doctor1.setNumberOfPatientsPerDay(7);
+		doctor1.setSpecialization("Psyotherepist");
+		doctor1.setPaymentPerDay(10000.00);
+		
+		doctor2.setName("Kumary Sirikumara");
+		doctor2.setGender('F');
+		doctor2.setClinicHours(4);
+		doctor2.setNumberOfPatientsPerDay(6);
+		doctor2.setSpecialization("Cardiologist");
+		doctor2.setPaymentPerDay(20000.00);
+		
+		Room room1 = new Room();
+		room1.setDoctor(doctor1);
+		room1.setReserveHours(8, doctor1.getClinicHours());
+		room1.setRoomNumber("R001");
+		
+		Room room2 = new Room();
+		room2.setDoctor(doctor2);
+		room2.setReserveHours(8, doctor2.getClinicHours());
+		room2.setRoomNumber("R002");
+		
+		hospital.addDoctor(doctor1);
+		hospital.addDoctor(doctor2);
+		hospital.assignRooms(room1);
+		hospital.assignRooms(room2);
+		
+		for(Doctor doctor : hospital.getDoctorList()) {
+			doctor.analysePatient();
+			doctor.prescribe();
+		}
+		
+		
+		serviceRegistration = context.registerService(Hospital.class.getName(), 
+				hospital, null);
+		
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Hospital Service went down!");
+		serviceRegistration.unregister();
+		context.ungetService(doctorServiceReference);
+	}
+
+}

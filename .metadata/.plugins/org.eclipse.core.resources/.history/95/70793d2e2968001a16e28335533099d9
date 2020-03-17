@@ -1,0 +1,49 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+
+public class HospitalImpl implements Hospital {
+
+	private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
+	private int numberOfRooms;
+	private ArrayList<Room> assignRooms = new ArrayList<Room>();
+	private double hospitalCharge;
+	
+	@Override
+	public ArrayList<Doctor> getDoctorList() {
+		return doctors;
+	}
+
+	@Override
+	public void addDoctor(Doctor doctor) {
+		doctors.add(doctor);
+	}
+
+	@Override
+	public void setNumberOfRooms(int numberOfRooms) {
+		this.numberOfRooms = numberOfRooms;
+	}
+
+	@Override
+	public void assignRooms(Room room) {
+		assignRooms.add(room);
+	}
+
+	@Override
+	public ArrayList<Room> getAssignRooms() {
+		return assignRooms;
+	}
+
+	@Override
+	public void setHospitalCharge(double charge) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getHospitalCharge() {
+		return hospitalCharge;
+	}
+
+	
+}

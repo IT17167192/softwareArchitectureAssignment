@@ -1,0 +1,95 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+
+public class DoctorImpl implements Doctor {
+	private String name;
+	private int id;
+	private int numberOfPatientPerDay;
+	private int consultingHours;
+	private double chargePerPatient;
+	private Room room;
+	
+	public int getConsultingHours() {
+		return consultingHours;
+	}
+
+	public void setConsultingHours(int consultingHours) {
+		this.consultingHours = consultingHours;
+	}
+
+	public double getChargePerPatient() {
+		return chargePerPatient;
+	}
+
+	public void setChargePerPatient(double chargePerPatient) {
+		this.chargePerPatient = chargePerPatient;
+	}
+
+	@Override
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setNumberOfPatientPerDay(int numberOfPatients) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getNumberOfPatientPerDay() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void analysePatien() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void prescribePatient() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getPayment() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRoom(Room room) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getRoom() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

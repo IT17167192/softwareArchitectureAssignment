@@ -1,0 +1,42 @@
+package com.mtit.hospital;
+
+import com.mtit.doctor.Doctor;
+import com.mtit.doctor.DoctotImpl;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+public class HospitalServiceActivator implements BundleActivator {
+
+	ServiceReference doctorServiceReference;
+	Doctor doctor1;
+	ServiceRegistration serviceRegistration;
+	
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Hospital Service is started!");
+		
+		doctorServiceReference = context.getServiceReference(Doctor.class.getName());
+		doctor1 = (Doctor)context.getService(doctorServiceReference);
+		
+		doctor1.setName("Yugma Fernando");
+		doctor1.setGender('M');
+		doctor1.setClinicHours(3);
+		doctor1.setNumberOfPatientsPerDay(7);
+		doctor1.setSpecialization("Psyotherepist");
+		doctor1.setPaymentPerDay(10000.00);
+		
+		Room room1 = new Room();
+		room1.setDoctor(doctor1);
+		room1.setReserveHours(8, doctor1.getClinicHours());
+		room1.setRoomNumber("R001");
+		
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		
+	}
+
+}

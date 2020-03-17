@@ -1,0 +1,6 @@
+#encoding=UTF-8
+#version=1
+com.beust.jcommander.source,1.72.0,file:/C:/Users/iTEC/.p2/pool/plugins/com.beust.jcommander.source_1.72.0.jar,-1,false
+org.apache-extras.beanshell.bsh.source,2.0.0.b6,file:/C:/Users/iTEC/.p2/pool/plugins/org.apache-extras.beanshell.bsh.source_2.0.0.b6.jar,-1,false
+org.testng.source,7.0.0.r201908191551,file:/C:/Users/iTEC/.p2/pool/plugins/org.testng.source_7.0.0.r201908191551.jar,-1,false
+org.yaml.snakeyaml.source,1.21.0,file:/C:/Users/iTEC/.p2/pool/plugins/org.yaml.snakeyaml.source_1.21.0.jar,-1,false

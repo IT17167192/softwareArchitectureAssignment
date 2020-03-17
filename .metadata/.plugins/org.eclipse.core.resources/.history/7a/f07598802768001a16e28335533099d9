@@ -1,0 +1,13 @@
+package com.mtit.hospital;
+
+public interface Doctor {
+	public void setName(String name);
+	public String getName();
+	public void setId(int id);
+	public int getId();
+	public void setNumberOfPatientPerDay(int numberOfPatients);
+	public int getNumberOfPatientPerDay();
+	public void analysePatien();
+	public void prescribePatient();
+	public void getPayment();
+}

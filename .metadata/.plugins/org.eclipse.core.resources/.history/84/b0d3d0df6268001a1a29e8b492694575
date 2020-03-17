@@ -1,0 +1,43 @@
+package com.mtit.account;
+
+import java.util.ArrayList;
+
+public class MockAccountController {
+	MockAccountDao mockAccountDao = new MockAccountDao();
+	
+	public Account checkAuthorization(String userName, String password) {
+		 
+		for(Account account : mockAccountDao.getAllAccounts()) {
+			if(account.getUserName().equals(userName.trim()) && account.getPassword().equals(password.trim())) {
+				return account;
+			}
+		}
+		
+		return null;
+	}
+	
+	public Account getAccountById(String accountId) {
+		for(Account account : mockAccountDao.getAllAccounts()) {
+			if(account.getAccountId().equals(accountId)) {
+				return account;
+			}
+		}
+		
+		return null;
+	}
+	
+	public ArrayList<MedicalHistory> getMedicalHistoryByAccountId(String accountId) {
+		ArrayList<MedicalHistory> mHistory = new ArrayList<MedicalHistory>();
+		for(MedicalHistory medicalHistory : mockAccountDao.getAllMedicalHistories()) {
+			if(medicalHistory.getAccountId().equals(accountId)) {
+				mHistory.add(medicalHistory);
+			}
+		}
+		
+		return mHistory;
+	}
+	
+	public void addMedicalHistory(MedicalHistory medicalHistory) {
+		mockAccountDao.addMedicalHistory(medicalHistory);
+	}
+}

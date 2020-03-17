@@ -1,0 +1,20 @@
+package com.mtit.account;
+
+import java.util.ArrayList;
+
+public class MockAccountDao {
+	private ArrayList<Account> accounts = new ArrayList<Account>();
+	
+	ArrayList<Account> getAllAccounts(){
+		Account account1 = new AccountImpl();
+		account1.setUserName("patient1");
+		account1.setPassword("password1");
+		account1.setCreditCardNo("155486248556");
+		account1.setCvv("456");
+		
+		accounts.add(account1);
+		
+		return accounts;
+	}
+	
+}

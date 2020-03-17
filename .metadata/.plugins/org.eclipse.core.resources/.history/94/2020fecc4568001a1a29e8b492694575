@@ -1,0 +1,56 @@
+package com.mtit.account;
+
+public class AccountImpl implements Account {
+
+	private String userName;
+	private String password;
+	
+	@Override
+	public void setUserName(String userName) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getUserName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPassword(String password) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCreditCardNo(String creditCardNo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getCreditCardNo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCvv(String cvv) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getCvv() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

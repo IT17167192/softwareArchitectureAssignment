@@ -1,0 +1,10 @@
+package com.mtit.account;
+
+public interface Account {
+	public void setUserName(String userName);
+	public String getUserName();
+	public void setPassword(String password);
+	public String getPassword();
+	public void setCreditCard(String creditCardNo, String cvv);
+	public void getCreditCard();
+}

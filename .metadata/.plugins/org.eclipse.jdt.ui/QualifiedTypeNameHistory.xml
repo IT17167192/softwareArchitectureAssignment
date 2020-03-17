@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.osgi.framework.ServiceRegistration"/>
+<fullyQualifiedTypeName name="com.mtit.doctor.DoctotImpl"/>
+<fullyQualifiedTypeName name="com.mtit.hospital.HospitalImpl"/>
+<fullyQualifiedTypeName name="com.mtit.doctor.Doctor"/>
+<fullyQualifiedTypeName name="com.mtit.hospital.DoctorImpl"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
+<fullyQualifiedTypeName name="org.osgi.framework.ServiceReference"/>
+<fullyQualifiedTypeName name="com.mtit.hospital.Hospital"/>
+<fullyQualifiedTypeName name="java.util.PrimitiveIterator.OfDouble"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.mtit.patient.Executer"/>
+<fullyQualifiedTypeName name="javax.print.Doc"/>
+<fullyQualifiedTypeName name="com.mtit.patient.Patient"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.mtit.hospital.Doctor"/>
+</qualifiedTypeNameHistroy>

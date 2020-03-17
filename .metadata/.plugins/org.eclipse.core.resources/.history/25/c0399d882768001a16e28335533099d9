@@ -1,0 +1,37 @@
+package com.mtit.hospital;
+
+import java.util.ArrayList;
+
+public class DoctorImpl implements Hospital {
+
+	@Override
+	public ArrayList<Doctor> getDoctorList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addDoctor(Doctor doctor) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setNumberOfRooms(int numberOfRooms) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void assignRooms(Room room) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public ArrayList<Room> getAssignRooms() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

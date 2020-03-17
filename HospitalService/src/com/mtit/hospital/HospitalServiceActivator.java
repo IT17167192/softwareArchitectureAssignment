@@ -1,0 +1,81 @@
+package com.mtit.hospital;
+
+import com.mtit.account.MockAccountController;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+public class HospitalServiceActivator implements BundleActivator {
+	
+	ServiceRegistration serviceRegistration;
+	ServiceReference accountReference;
+	
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Hospital Service is started!");
+		Hospital hospital = new HospitalImpl();
+		hospital.setNumberOfRooms(10);
+		hospital.setHospitalCharge(450.00);
+		
+		Room room1 = new Room();
+		room1.setRoomNumber("R001");
+		Room room2 = new Room();
+		room2.setRoomNumber("R002");
+		Room room3 = new Room();
+		room3.setRoomNumber("R003");
+	
+		Doctor doctor1 = new DoctorImpl();
+		doctor1.setChargePerPatient(550);
+		doctor1.setConsultingHours(3);
+		doctor1.setId(1);
+		doctor1.setName("Yugma Fernando");
+		doctor1.setNumberOfPatientPerDay(3);
+		doctor1.setRoom(room1);
+		doctor1.setSpecialization("Psychologist");
+		doctor1.setAvailableHour(8, "am");
+		room1.setDoctor(doctor1);
+		
+		Doctor doctor2 = new DoctorImpl();
+		doctor2.setChargePerPatient(600);
+		doctor2.setConsultingHours(2);
+		doctor2.setId(2);
+		doctor2.setName("Marve Rubez");
+		doctor2.setNumberOfPatientPerDay(5);
+		doctor2.setRoom(room2);
+		doctor2.setSpecialization("Cardiologist");
+		doctor2.setAvailableHour(8, "am");
+		room2.setDoctor(doctor2);
+		
+		Doctor doctor3 = new DoctorImpl();
+		doctor3.setChargePerPatient(1000);
+		doctor3.setConsultingHours(3);
+		doctor3.setId(3);
+		doctor3.setName("Shin Chao");
+		doctor3.setNumberOfPatientPerDay(20);
+		doctor3.setRoom(room3);
+		doctor3.setSpecialization("Dermatologists");
+		doctor3.setAvailableHour(7, "pm");
+		room3.setDoctor(doctor3);
+		
+		hospital.addDoctor(doctor1);
+		hospital.addDoctor(doctor2);
+		hospital.addDoctor(doctor3);
+		
+		hospital.assignRooms(room1);
+		hospital.assignRooms(room2);
+		hospital.assignRooms(room3);
+		
+		accountReference = context.getServiceReference(MockAccountController.class.getName());
+		MockAccountController mockAccountController = (MockAccountController)context.getService(accountReference);
+		
+		serviceRegistration = context.registerService(Hospital.class.getName(), 
+				hospital, null);
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Hospital Service went down!");
+		serviceRegistration.unregister();
+	}
+
+}

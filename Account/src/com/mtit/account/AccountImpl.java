@@ -1,0 +1,61 @@
+package com.mtit.account;
+
+public class AccountImpl implements Account {
+
+	private String userName;
+	private String password;
+	private String creditCardNo;
+	private String cvv;
+	private String accountId;
+	
+	@Override
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	@Override
+	public String getUserName() {
+		return userName;
+	}
+
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public void setCreditCardNo(String creditCardNo) {
+		this.creditCardNo = creditCardNo;
+	}
+
+	@Override
+	public String getCreditCardNo() {
+		return creditCardNo;
+	}
+
+	@Override
+	public void setCvv(String cvv) {
+		this.cvv = cvv;
+	}
+
+	@Override
+	public String getCvv() {
+		return cvv;
+	}
+
+	@Override
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
+	@Override
+	public String getAccountId() {
+		return accountId;
+	}
+
+}

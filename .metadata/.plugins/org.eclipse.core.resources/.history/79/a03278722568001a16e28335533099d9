@@ -1,0 +1,30 @@
+package com.mtit.hospital;
+
+import com.mtit.doctor.Doctor;
+import com.mtit.doctor.DoctotImpl;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+public class HospitalServiceActivator implements BundleActivator {
+	
+	ServiceRegistration serviceRegistration;
+	
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Hospital Service is started!");
+		Hospital hospital = new HospitalImpl();
+		hospital.setNumberOfRooms(10);
+		
+		serviceRegistration = context.registerService(Hospital.class.getName(), 
+				hospital, null);
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Hospital Service went down!");
+		serviceRegistration.unregister();
+	}
+
+}

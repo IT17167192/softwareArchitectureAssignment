@@ -1,0 +1,62 @@
+package com.mtit.hospital;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
+
+public class HospitalServiceActivator implements BundleActivator {
+	
+	ServiceRegistration serviceRegistration;
+	
+	public void start(BundleContext context) throws Exception {
+		System.out.println("Hospital Service is started!");
+		Hospital hospital = new HospitalImpl();
+		hospital.setNumberOfRooms(10);
+		hospital.setHospitalCharge(450.00);
+		
+		Room room1 = new Room();
+		room1.setRoomNumber("R001");
+		Room room2 = new Room();
+		room1.setRoomNumber("R001");
+		Room room3 = new Room();
+		room1.setRoomNumber("R001");
+	
+		Doctor doctor1 = new DoctorImpl();
+		doctor1.setChargePerPatient(550);
+		doctor1.setConsultingHours(3);
+		doctor1.setId(1);
+		doctor1.setName("Yugma Fernando");
+		doctor1.setNumberOfPatientPerDay(10);
+		doctor1.setRoom(room1);
+		doctor1.setSpecialization("Psychologist");
+		
+		Doctor doctor2 = new DoctorImpl();
+		doctor2.setChargePerPatient(600);
+		doctor2.setConsultingHours(2);
+		doctor2.setId(2);
+		doctor2.setName("Marve Rubez");
+		doctor2.setNumberOfPatientPerDay(5);
+		doctor2.setRoom(room2);
+		doctor2.setSpecialization("Cardiologist");
+		
+		Doctor doctor3 = new DoctorImpl();
+		doctor3.setChargePerPatient(1000);
+		doctor3.setConsultingHours(3);
+		doctor3.setId(1);
+		doctor3.setName("Shin Chao");
+		doctor3.setNumberOfPatientPerDay(20);
+		doctor3.setRoom(room1);
+		doctor3.setSpecialization("Dermatologists");
+		
+		serviceRegistration = context.registerService(Hospital.class.getName(), 
+				hospital, null);
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Hospital Service went down!");
+		serviceRegistration.unregister();
+	}
+
+}
