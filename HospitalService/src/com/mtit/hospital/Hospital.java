@@ -15,7 +15,7 @@ public interface Hospital {
 	public ArrayList<Room> getAssignRooms();
 	public void setHospitalCharge(double charge);
 	public double getHospitalCharge();
-	public void addAponitement();	
+	public void addAppointement();	
 	public int getTocken();
 	public void setToken(int patientToken);
 	public void setDoctor(Doctor doctor);

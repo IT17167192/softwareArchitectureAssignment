@@ -58,7 +58,7 @@ public class HospitalImpl implements Hospital {
 	}
 
 	@Override
-	public void addAponitement() {
+	public void addAppointement() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("==========================\nWELCOME TO HOSPITAL PORTAL\n==========================");
 		

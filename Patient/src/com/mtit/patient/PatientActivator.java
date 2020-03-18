@@ -43,7 +43,7 @@ public class PatientActivator implements BundleActivator {
 			while(input != 0) {
 				
 				Patient p = new Patient();
-				hospitalService.addAponitement();
+				hospitalService.addAppointement();
 				p.setToken(hospitalService.getTocken());
 				p.setDoctor(hospitalService.getDoctor());
 				p.setAccountId(hospitalService.getAccountId());
