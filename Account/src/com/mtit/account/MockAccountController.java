@@ -80,4 +80,8 @@ public class MockAccountController {
 		mockAccountDao.addAccount(account);
 		
 	}
+	
+	public void createMockAccounts() {
+		mockAccountDao.createMockData();
+	}
 }

@@ -38,7 +38,8 @@ public class AdministrationActivator implements BundleActivator {
 			System.out.print("cmd>>");
 			input = sc.nextInt();
 		}
-
+		
+		patient.getMockAccountController().createMockAccounts();
 		hospitalServiceReference = context.getServiceReference(Hospital.class.getName());
 		Hospital hospitalService = (Hospital)context.getService(hospitalServiceReference);
 		hospitalService.setAccountController(patient.getMockAccountController());

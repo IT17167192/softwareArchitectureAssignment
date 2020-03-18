@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.mtit.account.Account;
 import com.mtit.account.AccountImpl;
 import com.mtit.account.MockAccountController;
+import com.mtit.account.MockAccountDao;
 
 public class MockPatientController {
 
