@@ -41,45 +41,45 @@ public class PatientActivator implements BundleActivator {
 		p2.setAccountId(hospitalService.getAccountId());
 		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
 		
-		Patient p3 = new Patient();
-		hospitalService.addAponitement();
-		p3.setPatientName("Mary Ann");
-		p3.setToken(hospitalService.getTocken());
-		p3.setDoctor(hospitalService.getDoctor());
-		p3.setAccountId(hospitalService.getAccountId());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-		
-		Patient p4 = new Patient();
-		hospitalService.addAponitement();
-		p4.setPatientName("Jack Luice");
-		p4.setToken(hospitalService.getTocken());
-		p4.setDoctor(hospitalService.getDoctor());
-		p4.setAccountId(hospitalService.getAccountId());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-		
-		Patient p5 = new Patient();
-		hospitalService.addAponitement();
-		p5.setPatientName("Lucia Fernands");
-		p5.setToken(hospitalService.getTocken());
-		p5.setDoctor(hospitalService.getDoctor());
-		p5.setAccountId(hospitalService.getAccountId());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-		
-		
-		Patient p6 = new Patient();
-		hospitalService.addAponitement();
-		p6.setPatientName("Shen Rizvi");
-		p6.setToken(hospitalService.getTocken());
-		p6.setDoctor(hospitalService.getDoctor());
-		p6.setAccountId(hospitalService.getAccountId());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+//		Patient p3 = new Patient();
+//		hospitalService.addAponitement();
+//		p3.setPatientName("Mary Ann");
+//		p3.setToken(hospitalService.getTocken());
+//		p3.setDoctor(hospitalService.getDoctor());
+//		p3.setAccountId(hospitalService.getAccountId());
+//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+//		
+//		Patient p4 = new Patient();
+//		hospitalService.addAponitement();
+//		p4.setPatientName("Jack Luice");
+//		p4.setToken(hospitalService.getTocken());
+//		p4.setDoctor(hospitalService.getDoctor());
+//		p4.setAccountId(hospitalService.getAccountId());
+//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+//		
+//		Patient p5 = new Patient();
+//		hospitalService.addAponitement();
+//		p5.setPatientName("Lucia Fernands");
+//		p5.setToken(hospitalService.getTocken());
+//		p5.setDoctor(hospitalService.getDoctor());
+//		p5.setAccountId(hospitalService.getAccountId());
+//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+//		
+//		
+//		Patient p6 = new Patient();
+//		hospitalService.addAponitement();
+//		p6.setPatientName("Shen Rizvi");
+//		p6.setToken(hospitalService.getTocken());
+//		p6.setDoctor(hospitalService.getDoctor());
+//		p6.setAccountId(hospitalService.getAccountId());
+//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
 		
 		executer.addPatient(p1);
 		executer.addPatient(p2);
-		executer.addPatient(p3);
-		executer.addPatient(p4);
-		executer.addPatient(p5);
-		executer.addPatient(p6);
+//		executer.addPatient(p3);
+//		executer.addPatient(p4);
+//		executer.addPatient(p5);
+//		executer.addPatient(p6);
 		
 		System.out.println("\n==================================\nDoctor starts analysing patients\n==================================");
 		for(Patient patient : executer.getAllPatients()) {

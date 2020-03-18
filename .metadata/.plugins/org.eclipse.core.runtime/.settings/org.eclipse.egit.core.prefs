@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=D\:\\GIT\\.git;
-GitRepositoriesView.GitDirectories.relative=D\:\\GIT\\.git;
+GitRepositoriesView.GitDirectories=D\:\\GIT\\.git;D\:\\SA_ASSIGNMENT_2\\.git;
+GitRepositoriesView.GitDirectories.relative=D\:\\GIT\\.git;.git;
 RepositorySearchDialogSearchPath=D\:\\GIT
 eclipse.preferences.version=1

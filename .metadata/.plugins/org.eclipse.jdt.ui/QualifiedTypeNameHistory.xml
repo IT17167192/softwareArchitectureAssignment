@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.osgi.framework.ServiceRegistration"/>
 <fullyQualifiedTypeName name="com.mtit.doctor.DoctotImpl"/>
 <fullyQualifiedTypeName name="com.mtit.hospital.HospitalImpl"/>
 <fullyQualifiedTypeName name="com.mtit.doctor.Doctor"/>
@@ -15,6 +14,13 @@
 <fullyQualifiedTypeName name="com.mtit.patient.Executer"/>
 <fullyQualifiedTypeName name="javax.print.Doc"/>
 <fullyQualifiedTypeName name="com.mtit.patient.Patient"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.mtit.hospital.Doctor"/>
+<fullyQualifiedTypeName name="com.mtit.account.AccountImpl"/>
+<fullyQualifiedTypeName name="com.mtit.account.MockAccountDao"/>
+<fullyQualifiedTypeName name="org.osgi.framework.ServiceRegistration"/>
+<fullyQualifiedTypeName name="com.mtit.account.Account"/>
+<fullyQualifiedTypeName name="com.mtit.account.MockAccountController"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.mtit.account.MedicalHistory"/>
+<fullyQualifiedTypeName name="com.mtit.account.BaseClass"/>
 </qualifiedTypeNameHistroy>

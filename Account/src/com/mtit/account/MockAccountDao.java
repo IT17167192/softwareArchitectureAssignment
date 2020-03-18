@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class MockAccountDao {
 	private ArrayList<Account> accounts = new ArrayList<Account>();
 	private ArrayList<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
+	private int uniqueId = 1;
 	
 	public void addMedicalHistory(MedicalHistory medicalHistory) {
 		medicalHistories.add(medicalHistory);
@@ -66,6 +67,15 @@ public class MockAccountDao {
 	
 	ArrayList<MedicalHistory> getAllMedicalHistories(){
 		return medicalHistories;
+	}
+	
+	public void addAccount(Account account) {
+		accounts.add(account);
+	}
+	
+	public int getMaxAccountId() {
+		System.out.println("Unique id : "+uniqueId);
+		return uniqueId++;
 	}
 	
 }
