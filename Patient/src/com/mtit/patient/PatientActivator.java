@@ -6,6 +6,9 @@ import com.mtit.hospital.Doctor;
 import com.mtit.hospital.Hospital;
 import com.mtit.patient.account.MockPatientController;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -16,7 +19,7 @@ public class PatientActivator implements BundleActivator {
 	ServiceReference accountServiceReference;
 	Hospital hospitalService;
 	MockAccountController mockAccountController;
-	
+	MockPatientController mockPatientController;
 	
 	public void start(BundleContext context) throws Exception {
 		hospitalServiceReference = context.getServiceReference(Hospital.class.getName());
@@ -26,62 +29,53 @@ public class PatientActivator implements BundleActivator {
 		mockAccountController = (MockAccountController)context.getService(accountServiceReference);
 
 		Executer executer = new Executer();
+		Scanner sc = new Scanner(System.in);
 		
-		Patient p1 = new Patient();
-		hospitalService.addAponitement();
-		p1.setToken(hospitalService.getTocken());
-		p1.setDoctor(hospitalService.getDoctor());
-		p1.setAccountId(hospitalService.getAccountId());
-		p1.setPatientName(hospitalService.getPatientController().getPatientByAccountId(p1.getAccountId()).getPatientName());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		System.out.println("press 1 to access the Hospital portal || Press 0 to exit");
+		System.out.print("cmd>>");
 		
-		Patient p2 = new Patient();
-		hospitalService.addAponitement();
-		p2.setToken(hospitalService.getTocken());
-		p2.setDoctor(hospitalService.getDoctor());
-		p2.setAccountId(hospitalService.getAccountId());
-		p2.setPatientName(hospitalService.getPatientController().getPatientByAccountId(p2.getAccountId()).getPatientName());
-		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		int input;
 		
-//		Patient p3 = new Patient();
-//		hospitalService.addAponitement();
-//		p3.setPatientName("Mary Ann");
-//		p3.setToken(hospitalService.getTocken());
-//		p3.setDoctor(hospitalService.getDoctor());
-//		p3.setAccountId(hospitalService.getAccountId());
-//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-//		
-//		Patient p4 = new Patient();
-//		hospitalService.addAponitement();
-//		p4.setPatientName("Jack Luice");
-//		p4.setToken(hospitalService.getTocken());
-//		p4.setDoctor(hospitalService.getDoctor());
-//		p4.setAccountId(hospitalService.getAccountId());
-//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-//		
-//		Patient p5 = new Patient();
-//		hospitalService.addAponitement();
-//		p5.setPatientName("Lucia Fernands");
-//		p5.setToken(hospitalService.getTocken());
-//		p5.setDoctor(hospitalService.getDoctor());
-//		p5.setAccountId(hospitalService.getAccountId());
-//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
-//		
-//		
-//		Patient p6 = new Patient();
-//		hospitalService.addAponitement();
-//		p6.setPatientName("Shen Rizvi");
-//		p6.setToken(hospitalService.getTocken());
-//		p6.setDoctor(hospitalService.getDoctor());
-//		p6.setAccountId(hospitalService.getAccountId());
-//		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+		try {
+			
+			input = sc.nextInt();				
+			
+			while(input != 0) {
+				
+				Patient p = new Patient();
+				hospitalService.addAponitement();
+				p.setToken(hospitalService.getTocken());
+				p.setDoctor(hospitalService.getDoctor());
+				p.setAccountId(hospitalService.getAccountId());
+				mockPatientController = hospitalService.getPatientController();
+				p.setPatientName(hospitalService.getPatientController().getPatientByAccountId(p.getAccountId()).getPatientName());
+				mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
+				
+				if(executer.checkPatientAvaialableByAccId(p.getAccountId())) {
+					executer.addPatient(p);				
+				}
+				
+				System.out.println("press 1 to access the Hospital portal || Press 0 to exit");
+				System.out.print("cmd>>");
+				
+				try {
+					input = sc.nextInt();				
+				}catch (InputMismatchException e) {
+					System.out.println("***Invalid input***");
+					System.out.println("press 1 to access the Hospital portal || Press 0 to exit");
+					System.out.print("cmd>>");
+					input = sc.nextInt();
+				}
+				
+			}
 		
-		executer.addPatient(p1);
-		executer.addPatient(p2);
-//		executer.addPatient(p3);
-//		executer.addPatient(p4);
-//		executer.addPatient(p5);
-//		executer.addPatient(p6);
+		}catch (InputMismatchException e) {
+			System.out.println("***Invalid input***");
+			System.out.println("press 1 to access the Hospital portal || Press 0 to exit");
+			System.out.print("cmd>>");
+			input = sc.nextInt();
+		}
+		
 		
 		System.out.println("\n==================================\nDoctor starts analysing patients\n==================================");
 		for(Patient patient : executer.getAllPatients()) {

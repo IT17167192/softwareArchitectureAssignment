@@ -33,7 +33,8 @@ public class AdministrationActivator implements BundleActivator {
 		while(input != 0) {
 			System.out.println("\n===================================\nHospital Administration-Add Patient"
 					+ "\n===================================\n");
-			patient.addPatient();	
+			patient.addPatient();
+			System.out.println("To add new patient press 1 || To exit press 0");
 			System.out.print("cmd>>");
 			input = sc.nextInt();
 		}

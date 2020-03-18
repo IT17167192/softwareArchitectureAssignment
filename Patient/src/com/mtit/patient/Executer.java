@@ -12,4 +12,14 @@ public class Executer {
 	public ArrayList<Patient> getAllPatients(){
 		return patients;
 	}
+	
+	public boolean checkPatientAvaialableByAccId(String accId) {
+		for(Patient patient : patients) {
+			if(patient.getAccountId().equals(accId)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }
