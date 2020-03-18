@@ -1,4 +1,4 @@
-package com.mtit.patient;
+package com.mtit.patient.account;
 
 import com.mtit.account.Account;
 

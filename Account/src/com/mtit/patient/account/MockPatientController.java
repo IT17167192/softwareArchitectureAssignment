@@ -1,4 +1,4 @@
-package com.mtit.patient;
+package com.mtit.patient.account;
 
 import java.util.Scanner;
 
@@ -28,9 +28,14 @@ public class MockPatientController {
 		System.out.println("\n===========================\nPatient personal details\n===========================\n");
 		System.out.print("Enter patient name : ");
 		String name = sc.nextLine();
+		patient.setPatientName(name);
 		
-		mockAccountController.addAccount();
+		mockAccountController.addAccount(patient, mockPatientDao);
 		
+	}
+	
+	public MockAccountController getMockAccountController() {
+		return mockAccountController;
 	}
 	
 }

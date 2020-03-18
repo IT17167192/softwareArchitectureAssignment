@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.mtit.account.Account;
 import com.mtit.account.MedicalHistory;
+import com.mtit.account.MockAccountController;
+import com.mtit.patient.account.MockPatientController;
 
 public interface Hospital {
 	public ArrayList<Doctor> getDoctorList();
@@ -24,4 +26,8 @@ public interface Hospital {
 	public Account getAccount();
 	public void setMedicalHistory(MedicalHistory medicalHistory);
 	public MedicalHistory getMedicalHistory();
+	public MockAccountController getAccountController();
+	public void setAccountController(MockAccountController mockAccountController);
+	public MockPatientController getPatientController();
+	public void setPatientController(MockPatientController mockPatientController);
 }

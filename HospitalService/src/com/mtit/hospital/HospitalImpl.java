@@ -5,6 +5,7 @@ import java.util.PrimitiveIterator.OfDouble;
 import java.util.Scanner;
 
 import com.mtit.account.MockAccountController;
+import com.mtit.patient.account.MockPatientController;
 import com.mtit.account.Account;
 import com.mtit.account.MedicalHistory;
 
@@ -18,6 +19,8 @@ public class HospitalImpl implements Hospital {
 	private Doctor doctor;
 	private Account account;
 	private MedicalHistory medicalHistory;
+	private MockAccountController mockAccountController;
+	private MockPatientController mockPatientController;
 	
 	@Override
 	public ArrayList<Doctor> getDoctorList() {
@@ -65,7 +68,7 @@ public class HospitalImpl implements Hospital {
 		System.out.print("Enter password : ");
 		String password = sc.nextLine();
 		
-		MockAccountController mockAccountController = new MockAccountController();
+		MockAccountController mockAccountController = getAccountController();
 		Account account = mockAccountController.checkAuthorization(userName, password);
 		
 		while(account == null) {
@@ -201,6 +204,26 @@ public class HospitalImpl implements Hospital {
 	@Override
 	public MedicalHistory getMedicalHistory() {
 		return medicalHistory;
+	}
+
+	@Override
+	public MockAccountController getAccountController() {
+		return mockAccountController;
+	}
+
+	@Override
+	public void setAccountController(MockAccountController mockAccountController) {
+		this.mockAccountController = mockAccountController;
+	}
+
+	@Override
+	public MockPatientController getPatientController() {
+		return mockPatientController;
+	}
+
+	@Override
+	public void setPatientController(MockPatientController mockPatientController) {
+		this.mockPatientController = mockPatientController;
 	}
 	
 }

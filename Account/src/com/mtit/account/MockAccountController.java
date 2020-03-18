@@ -3,6 +3,9 @@ package com.mtit.account;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.mtit.patient.account.MockPatientDao;
+import com.mtit.patient.account.MockPatientModel;
+
 public class MockAccountController {
 	MockAccountDao mockAccountDao = new MockAccountDao();
 	
@@ -42,7 +45,7 @@ public class MockAccountController {
 		mockAccountDao.addMedicalHistory(medicalHistory);
 	}
 	
-	public void addAccount() {
+	public void addAccount(MockPatientModel patient, MockPatientDao mockPatientDao) {
 		Account account = new AccountImpl();
 		Scanner sc = new Scanner(System.in);
 		
@@ -67,8 +70,13 @@ public class MockAccountController {
 		account.setCvv(cvv);
 		
 		account.setAccountId("account" + mockAccountDao.getMaxAccountId());
-				
-		//add to mock db
+		patient.setAccountId(account.getAccountId());
+		patient.setAccount(account);
+		
+		//add to mock patient db
+		mockPatientDao.addPatient(patient);
+		
+		//add to mock account db
 		mockAccountDao.addAccount(account);
 		
 	}

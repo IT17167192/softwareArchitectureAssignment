@@ -4,6 +4,8 @@ import com.mtit.account.MedicalHistory;
 import com.mtit.account.MockAccountController;
 import com.mtit.hospital.Doctor;
 import com.mtit.hospital.Hospital;
+import com.mtit.patient.account.MockPatientController;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -22,23 +24,23 @@ public class PatientActivator implements BundleActivator {
 		
 		accountServiceReference = context.getServiceReference(MockAccountController.class.getName());
 		mockAccountController = (MockAccountController)context.getService(accountServiceReference);
-		
+
 		Executer executer = new Executer();
 		
 		Patient p1 = new Patient();
 		hospitalService.addAponitement();
-		p1.setPatientName("Rahul");
 		p1.setToken(hospitalService.getTocken());
 		p1.setDoctor(hospitalService.getDoctor());
 		p1.setAccountId(hospitalService.getAccountId());
+		p1.setPatientName(hospitalService.getPatientController().getPatientByAccountId(p1.getAccountId()).getPatientName());
 		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
 		
 		Patient p2 = new Patient();
 		hospitalService.addAponitement();
-		p2.setPatientName("Zed Nowik");
 		p2.setToken(hospitalService.getTocken());
 		p2.setDoctor(hospitalService.getDoctor());
 		p2.setAccountId(hospitalService.getAccountId());
+		p2.setPatientName(hospitalService.getPatientController().getPatientByAccountId(p2.getAccountId()).getPatientName());
 		mockAccountController.addMedicalHistory(hospitalService.getMedicalHistory());
 		
 //		Patient p3 = new Patient();

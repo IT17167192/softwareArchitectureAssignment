@@ -1,4 +1,4 @@
-package com.mtit.patient;
+package com.mtit.patient.account;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ public class MockPatientDao {
 	
 	public void addPatient(MockPatientModel patient) {
 		patientDetails.add(patient);
+		System.out.println("Patient added successfully");
 	}
 	
 	public ArrayList<MockPatientModel> getAllPaitents(){
