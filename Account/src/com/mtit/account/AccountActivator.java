@@ -5,7 +5,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
 import com.mtit.patient.account.MockPatientController;
-
+//comment
 public class AccountActivator implements BundleActivator {
 
 	ServiceRegistration serviceRegistration;
